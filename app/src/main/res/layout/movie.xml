@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="movieModel"
+            type="com.codingbhasha.assingment.models.MovieModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="3dp"
+            app:contentPadding="10dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp">
+
+                    <ImageView
+                        android:contentDescription="@string/poster"
+                        android:id="@+id/poster"
+                        android:layout_width="75dp"
+                        android:layout_height="100dp"
+                        android:background="#F5F5F5"
+                        android:src="@drawable/not" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/adult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{ movieModel.adult ? `Type: 18+`:`Type: All`  }"
+
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/textMemberId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{`Tittle: `+movieModel.title}"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/runtime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text="@{`Popularity: ` + movieModel.popularity }"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="@color/black"
+                        android:visibility="@{movieModel.popularity==0 ? View.GONE :View.VISIBLE }" />
+                    <TextView
+                        android:id="@+id/relesedate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text="@{`Release Date: ` + movieModel.release_date}"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="@color/black"
+                        android:visibility="@{movieModel.release_date.contentEquals(``) ? View.GONE :View.VISIBLE }" />
+                    <TextView
+                        android:id="@+id/rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text="@{`Rating: ` + movieModel.vote_average + `-(`+movieModel.vote_count+`)`}"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="@color/black"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/overview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{`Overview: `+movieModel.overview}"
+
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="@color/black"
+                        android:visibility="@{movieModel.overview.contentEquals(``) ? View.GONE :View.VISIBLE }" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+</layout>
