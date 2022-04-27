@@ -23,11 +23,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        adapter = LatestMoviesAdpater(application)
-        dataBinding!!.recyclerView.adapter = adapter
-
-
         val repo = (application as App).repos
         moviesView =
             ViewModelProvider(this, MoviesViewModelFactory(repo)).get(MoviesViewModel::class.java)
